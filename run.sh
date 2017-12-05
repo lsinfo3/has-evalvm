@@ -25,6 +25,9 @@ cvar=$2;
 init=$3;
 p=$4;
 reps=$5; 
+sub_folder=$6;
+enc_type=$7; #specify if variable or fixed
+vid_id=$8; #name of video, eg bbb
 
 #for cvar in 0.0 0.1 0.2 0.4; do
 #for bw in 300 400 500 600 700 800 900; do
