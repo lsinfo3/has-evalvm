@@ -63,6 +63,6 @@ for p in 5 10 40; do
 #done
 
 tar czf player_"$trace"_init"$init"_p"$p".tar.gz logs/player_"$trace"_init"$init"_p"$p"*.log
-scp -o StrictHostKeyChecking=no player_"$trace"_init"$init"_p"$p".tar.gz valli@132.187.12.137:workspace/HASDocker/
+scp -o StrictHostKeyChecking=no player_"$trace"_init"$init"_p"$p".tar.gz susanna@132.187.12.97:HASDocker/
 done
 killall trace_loop.sh
