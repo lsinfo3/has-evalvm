@@ -25,21 +25,20 @@ duration=$8
 heuristic=$9
 
 cd has-evalvm/shaping
-sudo ./setupShaper.sh	
+sudo ./setupShaper.sh
 echo $bw > value
 sudo ./rate.sh
 cd ../..
 
 direct=$log_output_dir
-mkdir $direct
 
 std=$(echo $cvar*$bw | bc)
 bwparam=$bw","${std%.*}
 counter=1
 while [ $counter -le $reps ]; do
-    python tapas/play.py -u http://127.0.0.1:8000/has-evalvm/$vid_id_$enc_type_$duration.m3u8 -m nodec -i $init -b $bwparam -p 40 -c $heuristic > player.log
-    cp player.log "$direct"/player_"$bw"kbit_cv"$cvar"_init"$init"_p40_"$counter"_"$vid_id"_"$enc_type"_"$duration".log
-    
+    logdir_tapas="$direct/player_${bw}kbit_cv${cvar}_init${init}_p40_${counter}_${vid_id}_${enc_type}_${duration}"
+    python tapas/play.py -u http://127.0.0.1:8000/videos/streaming_vids/${vid_id}_${enc_type}_${duration}.m3u8 -m nodec -i $init -b $bwparam -p 40 -a $heuristic -l $logdir_tapas
+
     sleep 1s
     echo "completed $cvar, $bw, $counter, $vid_id, $enc_type, $duration"
     counter=$((counter + 1))
