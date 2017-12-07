@@ -9,7 +9,6 @@ sleep 2s
 python -m SimpleHTTPServer &> server.log &
 STATUS=0
 while [ $STATUS -eq 0 ]; do
-#    echo $STATUS
     STATUS=$(pgrep python | wc -l)
     sleep 1s
 done
