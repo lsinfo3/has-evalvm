@@ -1,5 +1,5 @@
->fix_bw_config
->traces_config
+>streaming_bbb_sintel_fix
+>streaming_bbb_sintel_traces
 
 
 reps=10;
@@ -38,8 +38,8 @@ declare -a var_ranges=( "0_15" \
 
 #videos
 declare -a videos=( "bbb" \
-"sintel" \
-"9o9")
+"sintel" )
+#"9o9")
 
 #fix_lengtt vids;
 declare -a fix_vids=("bbb;3_5" \
@@ -49,11 +49,11 @@ declare -a fix_vids=("bbb;3_5" \
 "sintel;5" \
 "sintel;8" \
 "sintel;9_5" \
-"sintel;15" \
-"9o9;4_5" \
-"9o9;8" \
-"9o9;8_5" \
-"9o9;9")
+"sintel;15"  )
+#"9o9;4_5" \
+#"9o9;8" \
+#"9o9;8_5" \
+#"9o9;9")
 
 
 for h in "${heuristics[@]}"
@@ -66,7 +66,7 @@ do
 		do
 			for video in "${videos[@]}"
 			do
-				echo "$b;0;0;0;$reps;var;$video;$v;$h" >> fix_bw_config
+				echo "$b;0;0;0;$reps;var;$video;$v;$h" >> streaming_bbb_sintel_fix
 			done	
 		done
 	
@@ -75,7 +75,7 @@ do
 	do
 		for b in "${bw_lims[@]}"
 		do
-			echo "$b;0;0;0;$reps;fix;$f;$h" >> fix_bw_config
+			echo "$b;0;0;0;$reps;fix;$f;$h" >> streaming_bbb_sintel_fix
 		done
 	done
 	
@@ -93,7 +93,7 @@ do
 		do
 			for video in "${videos[@]}"
 			do
-				echo "$t;0;0;0;$reps;var;$video;$v;$h" >> traces_config
+				echo "$t;0;0;0;$reps;var;$video;$v;$h" >> streaming_bbb_sintel_traces
 			done	
 		done
 	
@@ -102,7 +102,7 @@ do
 	do
 		for t in "${trace_list[@]}"
 		do
-			echo "$t;0;0;0;$reps;fix;$f;$h" >> traces_config
+			echo "$t;0;0;0;$reps;fix;$f;$h" >> streaming_bbb_sintel_traces
 		done
 	done
 	
