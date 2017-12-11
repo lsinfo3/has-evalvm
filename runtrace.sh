@@ -33,7 +33,7 @@ mkdir $direct
 counter=1
 while [ $counter -le $reps ]; do
 	logdir_tapas="$direct/player_${trace}_${counter}_${vid_id}_${enc_type}_${duration}_${heuristic}"
-	python tapas/play.py -u http://127.0.0.1:8000/videos/streaming_vids/${vid_id}_${enc_type}_${duration}.m3u8 -m nodec -i $init -b $bwparam -p 40 -a $heuristic -l $logdir_tapas
+	python tapas/play.py -u http://127.0.0.1:8000/videos/streaming_vids/${vid_id}_${enc_type}_${duration}.m3u8 -m nodec -i $init -p 40 -a $heuristic -l $logdir_tapas
 	#cp player.log "$direct"/player_"$trace"_init"$init"_p"$p"_"$counter".log
 	sleep 1s
 	echo "completed "$trace","$counter
