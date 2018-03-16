@@ -35,7 +35,7 @@ std=$(echo $cvar*$bw | bc)
 bwparam=$bw","${std%.*}
 counter=1
 while [ $counter -le $reps ]; do
-    logdir_tapas="$direct/2018_player_${bw}_${counter}_${vid_id}_${enc_type}_${duration}_${heuristic}"
+    logdir_tapas="$direct/2019_player_${bw}_${counter}_${vid_id}_${enc_type}_${duration}_${heuristic}"
     python tapas/play.py -u http://127.0.0.1:8000/videos/streaming_vids/2018/${vid_id}_${enc_type}_${duration}.m3u8 -m nodec -i $init -b $bwparam -p 40 -a $heuristic -l $logdir_tapas
 
     sleep 1s
